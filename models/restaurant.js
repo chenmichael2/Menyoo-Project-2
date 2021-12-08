@@ -16,9 +16,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   restaurant.init({
-    restaurantId: DataTypes.INTEGER,
     name: DataTypes.STRING,
-    hours: DataTypes.ARRAY(DataTypes.STRING),
+    mon: DataTypes.STRING,
+    tue: DataTypes.STRING,
+    wed: DataTypes.STRING,
+    thu: DataTypes.STRING,
+    fri: DataTypes.STRING,
+    sat: DataTypes.STRING,
+    sun: DataTypes.STRING,
     locPicture: DataTypes.ARRAY(DataTypes.STRING),
     foodPicture: DataTypes.ARRAY(DataTypes.STRING),
     rating: DataTypes.INTEGER,
@@ -27,7 +32,9 @@ module.exports = (sequelize, DataTypes) => {
     location: DataTypes.STRING,
     verified: DataTypes.BOOLEAN,
     price: DataTypes.STRING,
-    review: DataTypes.ARRAY(DataTypes.INTEGER)
+    review: DataTypes.ARRAY(DataTypes.INTEGER),
+    reviewId: DataTypes.INTEGER,
+    foodId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'restaurant',

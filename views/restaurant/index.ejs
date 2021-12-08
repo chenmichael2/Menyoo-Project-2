@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants</title>
+</head>
+<body>
+    <% for( let i = 0; i < restaurants.length; i++ ) { %>
+        <% let a = restaurants[i]; %> 
+        <% a = a.toJSON() %>
+        <p>id: <%= a.id %></p>
+        <p>Name:<%= a.name %></p>
+        <p>Hours: 
+            <p>Mon: <%= a.mon %></p>
+            <p>Tue: <%= a.tue %></p>
+            <p>Wed: <%= a.wed %></p>
+            <p>Thu: <%= a.thu %></p>
+            <p>Fri: <%= a.fri %></p>
+            <p>Sat: <%= a.sat %></p>
+            <p>Sun: <%= a.sun %></p>
+        </p>
+        <p>Location Pictures:<%= a.locPicture %></p>
+        <p>Food Pictures:<%= a.foodPicture %></p>
+        <p>Rating: <%= a.rating %></p>
+        <p>Description: <%= a.description %></p>
+        <p>Categories: <%= a.categories %></p>
+        <p>Location: <%= a.location %></p>
+        <p>Verified: <% if (a.verified === true) { %>
+            <%= 'yes' %>
+        <% } else { %> 
+        <%= 'no' %> 
+    <% } %>  </p>
+        <p>Price: <%= a.price %></p>
+        <p>Review: <%= a.review %></p>
+        <a href="/restaurant/<%=a.restaurantId%>">View Restaurant</a>
+        <hr>
+    <% } %>
+</body>
+</html>

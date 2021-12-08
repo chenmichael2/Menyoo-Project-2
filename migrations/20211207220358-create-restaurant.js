@@ -2,9 +2,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('restaurants', {
-      restaurantId: {
-        type: Sequelize.INTEGER,
-      },
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -14,8 +11,26 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      hours: {
-        type: Sequelize.ARRAY(Sequelize.STRING)
+      mon: {
+        type: Sequelize.STRING,
+      },
+      tue: {
+        type: Sequelize.STRING,
+      },
+      wed: {
+        type: Sequelize.STRING,
+      },
+      thu: {
+        type: Sequelize.STRING,
+      },
+      fri: {
+        type: Sequelize.STRING,
+      },
+      sat: {
+        type: Sequelize.STRING,
+      },
+      sun: {
+        type: Sequelize.STRING,
       },
       locPicture: {
         type: Sequelize.ARRAY(Sequelize.STRING)
@@ -43,6 +58,12 @@ module.exports = {
       },
       review: {
         type: Sequelize.ARRAY(Sequelize.INTEGER)
+      },
+      reviewId: {
+        type: Sequelize.INTEGER
+      },
+      foodId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
