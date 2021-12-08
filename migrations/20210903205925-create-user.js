@@ -24,7 +24,28 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
+      picture: { 
+        type: Sequelize.STRING
+      },
+      reviewNumber: { 
+        type: Sequelize.INTEGER
+      },
+      contributions: { 
+        type: Sequelize.INTEGER
+      },
+      likedFoods: { 
+        type: Sequelize.ARRAY(Sequelize.INTEGER)
+      },
+      likedRestaurant: { 
+        type: Sequelize.ARRAY(Sequelize.INTEGER)
+      },
+      verify: { 
+        type: Sequelize.BOOLEAN
+      },
+      verifiedRest: { 
+        type: Sequelize.INTEGER
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {

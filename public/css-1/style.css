@@ -4,6 +4,18 @@ nav ul li {
   margin-right: .3em;
 }
 
+body {
+  background-color: lightcoral;
+}
+.login {
+  text-align: right;
+}
+
+.mainbody {
+  text-align: center;
+}
+
 h1 {
-  color: chartreuse;
+  font-size: 100px;
+  text-align: center;
 }
