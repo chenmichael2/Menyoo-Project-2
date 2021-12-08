@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
     restaurant.findAll()
     .then(function(restaurantList) {
         console.log('FOUND ALL RESTAURANTS', restaurantList);
-        res.render('restaurant/index', { restaurants: restaurantList });
+        res.render('pages/restaurant/index', { restaurants: restaurantList });
     })
     .catch(function(err) {
         console.log('ERROR', err);
@@ -21,7 +21,7 @@ router.get('/', function (req, res) {
 
 // CREATE A RESTAURANT PAGE
 router.get('/new', isLoggedIn, function (req, res) {
-    res.render('restaurant/new');
+    res.render('pages/restaurant/new');
 });
 
 // READ
@@ -32,7 +32,7 @@ router.get('/:id', function(req, res) {
         if (restaurant) {
             let restaurant1 = restaurant.toJSON();
             console.log(restaurant1);
-            res.render('restaurant/show', { restaurant1 });
+            res.render('pages/restaurant/show', { restaurant1 });
         } else {
             console.log('THIS RESTAURANT DOESNT EXIST');
             res.render('404', { message: 'Cannot find restaurant. Please Try again' });
@@ -50,7 +50,7 @@ router.get('/edit/:id', isLoggedIn, function(req, res) {
     .then(function(restaurant) {
         if (restaurant) {
             restaurant1 = restaurant.toJSON();
-            res.render('restaurant/edit', { restaurant1 });
+            res.render('pages/restaurant/edit', { restaurant1 });
         } else {
             console.log('Cannot find restaurant');
             res.render('404', { message: 'Cannot find restaurant info. Please Try again' });
