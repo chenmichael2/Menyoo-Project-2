@@ -1,8 +1,4 @@
-nav ul li {
-  text-decoration: none;
-  display: inline-block;
-  margin-right: .3em;
-}
+@import url('https://fonts.googleapis.com/css2?family=Comforter&display=swap');
 
 body {
   background-color: lightcoral;
@@ -23,4 +19,5 @@ h1 {
   font-size: 100px;
   text-align: center;
   background-color: white;
+  font-family: "Comforter", sans-serif;
 }
