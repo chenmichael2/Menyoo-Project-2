@@ -11,8 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.restaurant.hasMany(models.review, { foreignKey: 'reviewId' });
-      models.restaurant.hasMany(models.food, { foreignKey: 'foodId' });
+      models.restaurant.hasMany(models.review, { foreignKey: 'restaurantId' });
+      models.restaurant.hasMany(models.food, { foreignKey: 'restaurantId' });
+      models.restaurant.belongsTo(models.User, { foreignKey: 'userId' });
     }
   };
   restaurant.init({
@@ -33,8 +34,6 @@ module.exports = (sequelize, DataTypes) => {
     verified: DataTypes.BOOLEAN,
     price: DataTypes.STRING,
     review: DataTypes.ARRAY(DataTypes.INTEGER),
-    reviewId: DataTypes.INTEGER,
-    foodId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'restaurant',

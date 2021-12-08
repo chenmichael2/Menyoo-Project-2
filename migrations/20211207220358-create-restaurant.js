@@ -59,10 +59,7 @@ module.exports = {
       review: {
         type: Sequelize.ARRAY(Sequelize.INTEGER)
       },
-      reviewId: {
-        type: Sequelize.INTEGER
-      },
-      foodId: {
+      userId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

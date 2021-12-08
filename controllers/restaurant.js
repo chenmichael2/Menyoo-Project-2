@@ -42,26 +42,24 @@ router.get('/:id', function(req, res) {
         console.log('ERROR', err);
     })
 });
-// router.get('/:id', function (req, res) {
-//     console.log('params', req.params.id);
-//     let albumIndex = Number(req.params.id);
-//     console.log(albumIndex);
-//     Album.findByPk(albumIndex)
-//     .then(function(album) {
-//         if (album) {
-//             album = album.toJSON();
-//             console.log('IS THIS AN ALBUM?', album);
-//             res.render('albums/show', { album })
-//         } else {
-//             console.log('This album does not exist');
-//             // render a 404 page
-//             res.render('404', { message: 'Album does not exist'});
-//         }
-//     })
-//     .catch(function(err) {
-//         console.log('THERE IS AN ERROR', err);
-//     })
-// });
+//Edit
+
+router.get('/edit/:id', isLoggedIn, function(req, res) {
+    let restaurantIndex = Number(req.params.id);
+    restaurant.findByPk(restaurantIndex)
+    .then(function(restaurant) {
+        if (restaurant) {
+            restaurant1 = restaurant.toJSON();
+            res.render('restaurant/edit', { restaurant1 });
+        } else {
+            console.log('Cannot find restaurant');
+            res.render('404', { message: 'Cannot find restaurant info. Please Try again' });
+        }
+    })
+    .catch(function(err) {
+        console.log('ERROR', err);
+    })
+})
 
 router.post('/', isLoggedIn, function(req, res) {
     console.log('SUBMITTED FORM', req.body);
