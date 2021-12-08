@@ -6,9 +6,13 @@ nav ul li {
 
 body {
   background-color: lightcoral;
+  text-align: right;
 }
 .login {
   text-align: right;
+}
+#profile {
+  text-align: left;
 }
 
 .mainbody {
@@ -18,4 +22,5 @@ body {
 h1 {
   font-size: 100px;
   text-align: center;
+  background-color: white;
 }
