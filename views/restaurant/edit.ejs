@@ -1,0 +1,41 @@
+<form action="/restaurant/<%= restaurant1.id %>/?_method=PUT" method="post">
+    <a href="/restaurant/<%= restaurant1.id %>">Go Back</a>
+    <label for="name">Name:</label>
+    <input type="text" name="name" value="<%= restaurant1.name %>">
+<br>
+    <div>Hours:</div>
+    <label for="mon">Monday:</label>
+    <input type="text" name="mon" value="<%= restaurant1.mon %>">
+    <br>
+    <label for="tue">Tueday:</label>
+    <input type="text" name="tue" value="<%= restaurant1.tue %>">
+    <br>
+    <label for="wed">Wednesday:</label>
+    <input type="text" name="wed" value="<%= restaurant1.wed %>">
+    <br>
+    <label for="thu">Thursday:</label>
+    <input type="text" name="thu" value="<%= restaurant1.thu %>">
+    <br>
+    <label for="fri">Friday:</label>
+    <input type="text" name="fri" value="<%= restaurant1.fri %>">
+    <br>
+    <label for="sat">saturday:</label>
+    <input type="text" name="sat" value="<%= restaurant1.sat %>">
+    <br>
+    <label for="sun">Sunday:</label>
+    <input type="text" name="sun" value="<%= restaurant1.sun %>">
+    <br>
+    <label for="description">Description:</label>
+    <input type="text" name="description" value="<%= restaurant1.description %>">
+    <br>
+    <label for="categories">Categories:</label>
+    <input type="text" name="categories" value="<%= restaurant1.categories %>">
+    <br>
+    <label for="location">Location:</label>
+    <input type="text" name="location" value="<%= restaurant1.location %>">
+    <br>
+    <label for="price">Price:</label>
+    <input type="text" name="price" value="<%= restaurant1.price %>">
+    <br>
+    <input type="submit">
+</form>

@@ -95,6 +95,48 @@ router.post('/', isLoggedIn, function(req, res) {
         res.render('404', { message: 'Restaurant not created. Try again.' });
     })
 })
+router.put('/:id', function(req, res) {
+    console.log('EDIT FORM DATA', req.body);
+    let restaurantIndex = Number(req.params.id);
+    restaurant.update({
+        name: req.body.name,
+        mon: req.body.mon,
+        tue: req.body.tue,
+        wed: req.body.wed,
+        thu: req.body.thu,
+        fri: req.body.fri,
+        sat: req.body.sat,
+        sun: req.body.sun,
+        description: req.body.description,
+        location: req.body.location,
+        price: req.body.price
+    }, {
+        where: { id: restaurantIndex }
+    })
+    .then(function(response) {
+        console.log('RESTAURANT IS UPDATED', response);
+        res.redirect(`/restaurant/${restaurantIndex}`);
+    })
+    .catch(function(err) {
+        console.log('ERROR', err);
+        res.render('404', { message: 'Update was not successful. Please try again' });
+    })
+})
+
+// DELETE
+// router.delete('/:id', function(req, res) {
+//     let restaurantIndex = Number(req.params.id);
+//     restaurant.destroy({
+//         where: { id: restaurantIndex }
+//     })
+//     .then(function(response) {
+//         console.log('DELETED', response);
+//         res.redirect('/restaurants');
+//     })
+//     .catch(function(err) {
+//         console.log('ERROR', err);
+//     })
+// });
 
 
 // // CREATE PHO HANA RESTAURANT
