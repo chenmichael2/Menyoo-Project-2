@@ -155,13 +155,13 @@ router.post('/food', isLoggedIn, function(req, res) {
     })
     .then(function(newFood) {
         restaurant.findByPk(Number(req.body.restaurantId))
-        .then(restaurantItem => {
+        .then(function(restaurantItem) {
             restaurantItem.addFood(newFood);
             restaurantItem.save();
         })
         console.log('NEW FOOD', newFood.toJSON());
         newFood = newFood.toJSON();
-        res.redirect(`/${Number(req.body.restaurantId)}/food/${newFood.id}`);
+        res.redirect(`${Number(req.body.restaurantId)}/food/${newFood.id}`);
     })
     .catch(function(err) {
         console.log('THERE IS AN ERROR', err);
