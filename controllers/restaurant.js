@@ -31,24 +31,6 @@ router.get('/search', function(req, res) {
     res.render('pages/restaurant/search');
 })
 
-// READ
-router.get('/:id', function(req, res) {
-    let restaurantIndex = Number(req.params.id);
-    restaurant.findByPk(restaurantIndex)
-    .then(function(restaurant) {
-        if (restaurant) {
-            let restaurant1 = restaurant.toJSON();
-            console.log(restaurant1);
-            res.render('pages/restaurant/show', { restaurant1 });
-        } else {
-            console.log('THIS RESTAURANT DOESNT EXIST');
-            res.render('404', { message: 'Cannot find restaurant. Please Try again' });
-        }
-    })
-    .catch(function(err) {
-        console.log('ERROR', err);
-    })
-});
 //Edit
 
 router.get('/edit/:id', isLoggedIn, function(req, res) {
@@ -67,6 +49,30 @@ router.get('/edit/:id', isLoggedIn, function(req, res) {
         console.log('ERROR', err);
     })
 })
+
+// READ
+router.get('/:id', function(req, res) {
+    let restaurantIndex = Number(req.params.id);
+    restaurant.findByPk(restaurantIndex)
+    .then(function(restaurant) {
+        if (restaurant) {
+            let restaurant1 = restaurant.toJSON();
+            console.log(restaurant1);
+            res.render('pages/restaurant/show', { restaurant1 });
+        } else {
+            console.log('THIS RESTAURANT DOESNT EXIST');
+            res.render('404', { message: 'Cannot find restaurant. Please Try again' });
+        }
+    })
+    .catch(function(err) {
+        console.log('ERROR', err);
+    })
+});
+
+// router.get('/:id/new', isLoggedIn, function(req, res) {
+//     res.render('pages/food/new');
+// })
+
 
 router.post('/', isLoggedIn, function(req, res) {
     console.log('SUBMITTED FORM', req.body);
@@ -171,5 +177,7 @@ router.put('/:id', function(req, res) {
 //         console.log('THERE IS AN ERROR CREATING RESTAURANT', err);
 //     })
 // });
+
+router.use('/:id/food', require('./food'));
 
 module.exports = router;

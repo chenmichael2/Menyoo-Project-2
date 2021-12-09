@@ -74,7 +74,7 @@ router.post('/', isLoggedIn, function(req, res) {
     .then(function(newFood) {
         console.log('NEW FOOD', newFood.toJSON());
         newFood = newFood.toJSON();
-        res.redirect(`Food/${newFood.id}`);
+        res.redirect(`/${newFood.id}`);
     })
     .catch(function(err) {
         console.log('THERE IS AN ERROR', err);
