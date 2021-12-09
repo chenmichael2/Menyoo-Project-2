@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 
 router.use(bodyParser.urlencoded({ extended: false }));
 
-const { user, restaurant } = require("../models");
+const { user, restaurant, food } = require("../models");
 
 //VIEW RESTAURANTS
 router.get('/', function (req, res) {
@@ -50,6 +50,28 @@ router.get('/edit/:id', isLoggedIn, function(req, res) {
     })
 })
 
+router.get('/:id/food/new', function(req, res) {
+    res.render('pages/food/new', { id: req.params.id });
+})
+
+router.get('/:id/food/:foodid', function(req, res) {
+    let foodIndex = Number(req.params.foodid);
+    food.findByPk(foodIndex)
+    .then(function(food) {
+        if (food) {
+            let food1 = food.toJSON();
+            console.log(food1);
+            res.render('pages/food/show', { food1 });
+        } else {
+            console.log('THIS FOOD DOESNT EXIST');
+            res.render('404', { message: 'Cannot find food. Please Try again' });
+        }
+    })
+    .catch(function(err) {
+        console.log('ERROR', err);
+    })
+})
+
 // READ
 router.get('/:id', function(req, res) {
     let restaurantIndex = Number(req.params.id);
@@ -68,11 +90,6 @@ router.get('/:id', function(req, res) {
         console.log('ERROR', err);
     })
 });
-
-// router.get('/:id/new', isLoggedIn, function(req, res) {
-//     res.render('pages/food/new');
-// })
-
 
 router.post('/', isLoggedIn, function(req, res) {
     console.log('SUBMITTED FORM', req.body);
@@ -106,6 +123,31 @@ router.post('/', isLoggedIn, function(req, res) {
     .catch(function(err) {
         console.log('THERE IS AN ERROR', err);
         res.render('404', { message: 'Restaurant not created. Try again.' });
+    })
+})
+router.post('/food', isLoggedIn, function(req, res) {
+    console.log('SUBMITTED FORM', req.body);
+    food.create({
+        name: req.body.name, 
+        description: req.body.description,
+        ingredients: req.body.ingredients,
+        meal: req.body.meal,
+        foodType: req.body.foodType,
+        price: req.body.price,
+    })
+    .then(function(newFood) {
+        restaurant.findByPk(Number(req.body.restaurantId))
+        .then(restaurantItem => {
+            restaurantItem.addFood(newFood);
+            restaurantItem.save();
+        })
+        console.log('NEW FOOD', newFood.toJSON());
+        newFood = newFood.toJSON();
+        res.redirect(`/${Number(req.body.restaurantId)}/food/${newFood.id}`);
+    })
+    .catch(function(err) {
+        console.log('THERE IS AN ERROR', err);
+        res.render('404', { message: 'Food not created. Try again.' });
     })
 })
 
@@ -177,7 +219,5 @@ router.put('/:id', function(req, res) {
 //         console.log('THERE IS AN ERROR CREATING RESTAURANT', err);
 //     })
 // });
-
-router.use('/:id/food', require('./food'));
 
 module.exports = router;

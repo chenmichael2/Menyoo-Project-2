@@ -8,14 +8,12 @@ const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const methodOverride = require('method-override');
 const { restaurant } = require('./models');
-const bodyParser = require('body-parser');
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 console.log(SECRET_SESSION);
 
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
@@ -45,6 +43,7 @@ app.get('/', function(req, res) {
   res.render('pages/main');
 });
 
+
 // Add this above /auth controllers
 app.get('/profile', isLoggedIn, (req, res) => {
   const user = req.user.get(); 
@@ -56,6 +55,8 @@ app.get('/profile', isLoggedIn, (req, res) => {
 // controllers
 app.use('/auth', require('./controllers/auth'));
 app.use('/restaurant', require('./controllers/restaurant'));
+app.use('/food', require('./controllers/food'));
+app.use('/search', require('./controllers/search'));
 
 
 const PORT = process.env.PORT || 3000;

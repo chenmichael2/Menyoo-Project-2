@@ -81,6 +81,7 @@ router.post('/', isLoggedIn, function(req, res) {
         res.render('404', { message: 'Food not created. Try again.' });
     })
 })
+
 router.put('/:id', function(req, res) {
     console.log('EDIT FORM DATA', req.body);
     let foodIndex = Number(req.params.id);
