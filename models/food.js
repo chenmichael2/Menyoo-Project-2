@@ -17,11 +17,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   food.init({
+    name: DataTypes.STRING,
     description: DataTypes.STRING,
     ingredients: DataTypes.STRING,
-    meal: DataTypes.ARRAY(DataTypes.STRING),
-    foodType: DataTypes.ARRAY(DataTypes.STRING),
-    price: DataTypes.INTEGER,
+    meal: DataTypes.STRING,
+    foodType: DataTypes.STRING,
+    price: DataTypes.FLOAT,
     likes: DataTypes.INTEGER
   }, {
     sequelize,

@@ -1,0 +1,22 @@
+<form action="/food/<%= food1.id %>/?_method=PUT" method="post">
+    <a href="/food/<%= food1.id %>">Go Back</a>
+    <label for="name">Name:</label>
+    <input type="text" name="name" value="<%= food1.name %>">
+<br>
+    <label for="description">Description:</label>
+    <input type="text" name="description" value="<%= food1.description %>">
+    <br>
+    <label for="ingredients">Ingredients:</label>
+    <input type="text" name="ingredients" value="<%= food1.ingredients %>">
+    <br>
+    <label for="meal">Meal:</label>
+    <input type="text" name="meal" value="<%= food1.meal %>">
+    <br>
+    <label for="foodType">Food Type:</label>
+    <input type="text" name="foodType" value="<%= food1.foodType %>">
+    <br>
+    <label for="price">Price:</label>
+    <input type="text" name="price" value="<%= food1.price %>">
+    <br>
+    <input type="submit">
+</form>
