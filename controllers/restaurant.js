@@ -145,28 +145,30 @@ router.post('/', isLoggedIn, function(req, res) {
 })
 router.post('/food', isLoggedIn, function(req, res) {
     console.log('SUBMITTED FORM', req.body);
-    food.create({
-        name: req.body.name, 
-        description: req.body.description,
-        ingredients: req.body.ingredients,
-        meal: req.body.meal,
-        foodType: req.body.foodType,
-        price: req.body.price,
-    })
-    .then(function(newFood) {
-        restaurant.findByPk(Number(req.body.restaurantId))
+    restaurant.findByPk(Number(req.body.restaurantId))
         .then(function(restaurantItem) {
-            restaurantItem.addFood(newFood);
-            restaurantItem.save();
+            restaurantItem.createFood({
+                name: req.body.name, 
+                description: req.body.description,
+                ingredients: req.body.ingredients,
+                meal: req.body.meal,
+                foodType: req.body.foodType,
+                price: Number(req.body.price),
+            })
+            .then(function(newFood) {
+                console.log(newFood.toJSON());
+                newFood = newFood.toJSON();
+                res.redirect(`${Number(req.body.restaurantId)}/food/${newFood.id}`);
+            })
+            .catch(function(err) {
+                console.log('THERE IS AN ERROR', err);
+                res.render('404', { message: 'Food not created. Try again.' });
+            })
         })
-        console.log('NEW FOOD', newFood.toJSON());
-        newFood = newFood.toJSON();
-        res.redirect(`${Number(req.body.restaurantId)}/food/${newFood.id}`);
-    })
-    .catch(function(err) {
-        console.log('THERE IS AN ERROR', err);
-        res.render('404', { message: 'Food not created. Try again.' });
-    })
+        .catch(function(err) {
+            console.log('THERE IS AN ERROR', err);
+            res.render('404', { message: 'Food not created. Try again.' });
+        })
 })
 
 router.put('/:id', function(req, res) {
