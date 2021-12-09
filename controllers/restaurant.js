@@ -4,7 +4,7 @@ const router = express.Router();
 const passport = require("../config/ppConfig");
 const isLoggedIn = require('../middleware/isLoggedIn');
 const bodyParser = require('body-parser');
-
+let API_URL = "https://api.yelp.com/v3";
 
 router.use(bodyParser.urlencoded({ extended: false }));
 

@@ -10,8 +10,6 @@ const { restaurant } = require('../models');
 router.post('/', function (req, res) {
     let name = req.body.name;
     let location = req.body.location;
-    let lowerName = name.toLowerCase();
-    let lowerLocation = location.toLowerCase();
     // if (name === '' && location === '') {
     //     restaurant.findAll()
     //     .then(function(restaurants) {
@@ -26,8 +24,8 @@ router.post('/', function (req, res) {
     // }
     restaurant.findAll({
         where: {
-                name: {[Op.like]: '%' + lowerName + '%'} ,
-                location: {[Op.like]: '%' + lowerLocation + '%'}
+                name: {[Op.iLike]: '%' + name + '%'} ,
+                location: {[Op.iLike]: '%' + location + '%'}
         }
     })
     .then(function(restaurants) {
