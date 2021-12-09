@@ -43,11 +43,7 @@ app.use((req, res, next) => {
 
 app.get('/', function(req, res) {
   res.render('pages/main');
-})
-
-app.get('/search', function(req, res) {
-  console.log(req.body);
-})
+});
 
 // Add this above /auth controllers
 app.get('/profile', isLoggedIn, (req, res) => {
