@@ -5,6 +5,7 @@ const passport = require("../config/ppConfig");
 const isLoggedIn = require('../middleware/isLoggedIn');
 const bodyParser = require('body-parser');
 
+
 router.use(bodyParser.urlencoded({ extended: false }));
 
 const { user, restaurant, food } = require("../models");
@@ -26,10 +27,6 @@ router.get('/', function (req, res) {
 router.get('/new', isLoggedIn, function (req, res) {
     res.render('pages/restaurant/new');
 });
-
-router.get('/search', function(req, res) {
-    res.render('pages/restaurant/search');
-})
 
 //Edit
 
@@ -55,12 +52,11 @@ router.get('/:id/food', function(req, res) {
     food.findAll({
         where: { restaurantId: restaurantIndex }
     })
-    .then(function(foods) {
-        console.log('Foods for specific restaurant Id', foods)
-        if (foods) {
-            let food1 = foods.toJSON();
-            console.log(food1);
-            res.render('pages/food/show', { food1 });
+    .then(function(food) {
+        console.log('Foods for specific restaurant Id', food)
+        if (food) {
+            console.log(food);
+            res.render('pages/food/index', { food });
         } else {
             console.log('THIS RESTAURANT HAS NO MENU');
             res.render('404', { message: 'Restaurant has no menu. Please Try again' });
@@ -68,7 +64,7 @@ router.get('/:id/food', function(req, res) {
     })
 })
 
-router.get('/:id/food/new', function(req, res) {
+router.get('/:id/food/new', isLoggedIn, function(req, res) {
     res.render('pages/food/new', { id: req.params.id });
 })
 
@@ -143,6 +139,7 @@ router.post('/', isLoggedIn, function(req, res) {
         res.render('404', { message: 'Restaurant not created. Try again.' });
     })
 })
+
 router.post('/food', isLoggedIn, function(req, res) {
     console.log('SUBMITTED FORM', req.body);
     restaurant.findByPk(Number(req.body.restaurantId))
