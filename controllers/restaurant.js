@@ -50,6 +50,24 @@ router.get('/edit/:id', isLoggedIn, function(req, res) {
     })
 })
 
+router.get('/:id/food', function(req, res) {
+    let restaurantIndex = Number(req.params.id);
+    food.findAll({
+        where: { restaurantId: restaurantIndex }
+    })
+    .then(function(foods) {
+        console.log('Foods for specific restaurant Id', foods)
+        if (foods) {
+            let food1 = foods.toJSON();
+            console.log(food1);
+            res.render('pages/food/show', { food1 });
+        } else {
+            console.log('THIS RESTAURANT HAS NO MENU');
+            res.render('404', { message: 'Restaurant has no menu. Please Try again' });
+        }
+    })
+})
+
 router.get('/:id/food/new', function(req, res) {
     res.render('pages/food/new', { id: req.params.id });
 })
