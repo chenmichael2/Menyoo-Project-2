@@ -1,8 +1,8 @@
-    <!-- main body -->
-    <div class="mainbody">
-        <!-- product name -->
-        <h1>Menyoo</h1>
-        <form>
+<!-- main body -->
+<div class="mainbody">
+    <!-- product name -->
+    <h1>Menyoo</h1>
+    <form>
         <!-- Setting, Type, Price -->
         <div class="filter">
             <div class="setting">Setting:</div>
@@ -11,13 +11,15 @@
         </div>
         <!-- search bar and location -->
         <div class="searchBar">
-            <input class="search" type="text" placeholder="Search Restaurant">
-            <input class="location" type="text" placeholder="Location">
-            <input class="searchbutton" type="submit">
+            <form action="/search" method="post">
+                <input class="name" type="text" placeholder="Search Restaurant">
+                <input class="location" type="text" placeholder="Location">
+                <input type="submit" value="Search">
+            </form>
         </div>
-        </form>
+    </form>
 
-    </div>
+</div>
 
-    <!-- description -->
+<!-- description -->
 </body>

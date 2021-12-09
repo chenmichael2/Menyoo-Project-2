@@ -7,12 +7,15 @@ const session = require('express-session');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const methodOverride = require('method-override');
+const { restaurant } = require('./models');
+const bodyParser = require('body-parser');
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 console.log(SECRET_SESSION);
 
 app.set('view engine', 'ejs');
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
@@ -23,6 +26,8 @@ app.use(session({
   resave: false,             // Save the session even if it's modified, make this false
   saveUninitialized: true    // If we have a new session, we save it, therefore making that true
 }));
+
+
 
 app.use(flash());
 
@@ -36,8 +41,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => {
+app.get('/', function(req, res) {
   res.render('pages/main');
+})
+
+app.get('/search', function(req, res) {
+  console.log(req.body);
 })
 
 // Add this above /auth controllers
@@ -47,10 +56,12 @@ app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile', { user });
 });
 
+
 // controllers
 app.use('/auth', require('./controllers/auth'));
 app.use('/restaurant', require('./controllers/restaurant'));
 app.use('/food', require('./controllers/food'));
+
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {

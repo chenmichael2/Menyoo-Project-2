@@ -3,6 +3,9 @@ const express = require('express');
 const router = express.Router();
 const passport = require("../config/ppConfig");
 const isLoggedIn = require('../middleware/isLoggedIn');
+const bodyParser = require('body-parser');
+
+router.use(bodyParser.urlencoded({ extended: false }));
 
 const { user, restaurant } = require("../models");
 
@@ -23,6 +26,10 @@ router.get('/', function (req, res) {
 router.get('/new', isLoggedIn, function (req, res) {
     res.render('pages/restaurant/new');
 });
+
+router.get('/search', function(req, res) {
+    res.render('pages/restaurant/search');
+})
 
 // READ
 router.get('/:id', function(req, res) {
@@ -95,6 +102,7 @@ router.post('/', isLoggedIn, function(req, res) {
         res.render('404', { message: 'Restaurant not created. Try again.' });
     })
 })
+
 router.put('/:id', function(req, res) {
     console.log('EDIT FORM DATA', req.body);
     let restaurantIndex = Number(req.params.id);
