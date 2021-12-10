@@ -4,12 +4,20 @@ const router = express.Router();
 const passport = require("../config/ppConfig");
 const isLoggedIn = require('../middleware/isLoggedIn');
 const bodyParser = require('body-parser');
-let API_URL = "https://api.yelp.com/v3";
+let API_URL = "https://api.yelp.com/v3/businesses/{id}";
 
 router.use(bodyParser.urlencoded({ extended: false }));
 
 const { user, restaurant, food } = require("../models");
 
+// //API
+// fetch(API_URL)
+// .then(function(response) {
+//     console.log(response);
+// })
+// .catch(function(err) {
+//     console.log(err)
+// })
 //VIEW RESTAURANTS
 router.get('/', function (req, res) {
     restaurant.findAll()

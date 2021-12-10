@@ -55,6 +55,7 @@ app.use('/auth', require('./controllers/auth'));
 app.use('/restaurant', require('./controllers/restaurant'));
 app.use('/food', require('./controllers/food'));
 app.use('/search', require('./controllers/search'));
+app.use('/api', require('./controllers/api'));
 
 
 const PORT = process.env.PORT || 3000;
