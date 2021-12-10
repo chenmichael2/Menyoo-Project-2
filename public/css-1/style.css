@@ -5,7 +5,7 @@ body {
   text-align: right;
   z-index: -100;
 }
-.login {
+#login {
   text-align: right;
 }
 #profile {
@@ -27,4 +27,8 @@ h1 {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url('../assets-1/restaurant-photo.jpeg');
   opacity: 1;
   font-family: "Comforter", sans-serif;
+}
+
+#hidden {
+  display: none;
 }
