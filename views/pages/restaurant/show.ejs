@@ -1,17 +1,16 @@
 
 <body>
     <a href="/restaurant">Show All Restaurants</a>
-    <p>id: <%= restaurant1.id %></p>
-        <p>Name:<%= restaurant1.name %></p>
-        <p>Hours: 
-            <p>Mon: <%= restaurant1.mon %></p>
-            <p>Tue: <%= restaurant1.tue %></p>
-            <p>Wed: <%= restaurant1.wed %></p>
-            <p>Thu: <%= restaurant1.thu %></p>
-            <p>Fri: <%= restaurant1.fri %></p>
-            <p>Sat: <%= restaurant1.sat %></p>
-            <p>Sun: <%= restaurant1.sun %></p>
-        </p>
+        <p class="name">Name:<%= restaurant1.name %></p>
+        <ul>Hours: 
+            <li>Mon: <%= restaurant1.mon %></li>
+            <li>Tue: <%= restaurant1.tue %></li>
+            <li>Wed: <%= restaurant1.wed %></li>
+            <li>Thu: <%= restaurant1.thu %></li>
+            <li>Fri: <%= restaurant1.fri %></li>
+            <li>Sat: <%= restaurant1.sat %></li>
+            <li>Sun: <%= restaurant1.sun %></li>
+        </ul>
         <div class="map"></div>
         <p>Location Pictures:<%= restaurant1.locPicture %></p>
         <img src="" id="location">

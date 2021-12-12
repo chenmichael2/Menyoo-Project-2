@@ -1,43 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="stylesheet" href="../../../public/css-1/css-pages.css">
     <title>Restaurants</title>
 </head>
+
 <body>
-    <a href="/restaurant/new">Create New Restaurant</a>
-    <% for( let i = 0; i < restaurants.length; i++ ) { %>
-        <% let a = restaurants[i]; %> 
-        <% a = a.toJSON() %>
-        <p>id: <%= a.id %></p>
-        <p>Name:<%= a.name %></p>
-        <p>Hours: 
-            <p>Mon: <%= a.mon %></p>
-            <p>Tue: <%= a.tue %></p>
-            <p>Wed: <%= a.wed %></p>
-            <p>Thu: <%= a.thu %></p>
-            <p>Fri: <%= a.fri %></p>
-            <p>Sat: <%= a.sat %></p>
-            <p>Sun: <%= a.sun %></p>
-        </p>
-        <p>Location Pictures:<%= a.locPicture %></p>
-        <p>Food Pictures:<%= a.foodPicture %></p>
-        <p>Rating: <%= a.rating %></p>
-        <p>Description: <%= a.description %></p>
-        <p>Categories: <%= a.categories %></p>
-        <p>Location: <%= a.location %></p>
-        <p>Verified: <% if (a.verified === true) { %>
-            <%= 'yes' %>
-        <% } else { %> 
-        <%= 'no' %> 
-    <% } %>  </p>
-        <p>Price: <%= a.price %></p>
-        <p>Review: <%= a.review %></p>
-        <a href="/restaurant/<%=a.id%>">View Restaurant</a>
-        <hr>
-    <% } %>
+    <a id="createNew" href="/restaurant/new">Create New Restaurant</a>
+    <% for( let i=0; i < restaurants.length; i++ ) { %>
+        <% let a=restaurants[i]; %>
+            <% a=a.toJSON() %>
+                <div class="container">
+                    <p class="name">Name:<%= a.name %>
+                    </p>
+                    <ul>Hours:
+                        <li>Mon: <%= a.mon %>
+                        </li>
+                        <li>Tue: <%= a.tue %>
+                        </li>
+                        <li>Wed: <%= a.wed %>
+                        </li>
+                        <li>Thu: <%= a.thu %>
+                        </li>
+                        <li>Fri: <%= a.fri %>
+                        </li>
+                        <li>Sat: <%= a.sat %>
+                        </li>
+                        <li>Sun: <%= a.sun %>
+                        </li>
+                    </ul>
+                    <p>Location Pictures:<%= a.locPicture %>
+                    </p>
+                    <p>Food Pictures:<%= a.foodPicture %>
+                    </p>
+                    <p>Rating: <%= a.rating %>
+                    </p>
+                    <p>Description: <%= a.description %>
+                    </p>
+                    <p>Categories: <%= a.categories %>
+                    </p>
+                    <p>Location: <%= a.location %>
+                    </p>
+                    <p>Verified: <% if (a.verified===true) { %>
+                            <%= 'yes' %>
+                                <% } else { %>
+                                    <%= 'no' %>
+                                        <% } %>
+                    </p>
+                    <p>Price: <%= a.price %>
+                    </p>
+                    <p>Review: <%= a.review %>
+                    </p>
+                    <a href="/restaurant/<%=a.id%>">View Restaurant</a>
+                    <hr>
+                </div>
+                <% } %>
 </body>
+
 </html>

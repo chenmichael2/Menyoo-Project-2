@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../public/css-1/css-pages.css">
     <title>Foods</title>
 </head>
 <body>
-    <a href="/food/new">Create New Food</a>
+    <a id="createNew" href="/food/new">Create New Food</a>
     <% for( let i = 0; i < food.length; i++ ) { %>
         <% let a = food[i]; %> 
         <% a = a.toJSON() %>

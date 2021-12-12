@@ -2,18 +2,36 @@
 
 body {
   background-color: rgb(202, 49, 49);
-  text-align: right;
   z-index: -100;
 }
-#login {
-  text-align: right;
-}
+
 #profile {
   text-align: left;
 }
 
+#logins {
+  text-align: right;
+}
+
+ul {
+  list-style: none;
+}
+.container {
+  background-color: white;
+  border-radius: 10px;
+}
+
 .mainbody {
   text-align: center;
+}
+
+a {
+  text-align: right;
+}
+
+#logo {
+  color: white;
+  font-family: "Comforter", sans-serif;
 }
 
 h1 {
