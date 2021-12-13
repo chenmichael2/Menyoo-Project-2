@@ -14,26 +14,39 @@
 <body>
   <nav class="navbar">
     <div class="container">
-      <div class="navbar-brand">
-        <%- include('partials/alerts') %>
-          <% if (!currentUser) { %>
-            <span class="navbar-item" href="/">Menyoo</span>
-            <span class="navbar-burger burger" data-target="navbarMenu">
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-      </div>
-      <div id="navbarMenu" class="navbar-menu">
-        <div class="navbar-end">
-          <a class="navbar-item" href="/auth/signup">Signup</a>
-          <a class="navbar-item" href="/auth/login">Login</a>
-          <% } else { %>
-            <a class="navbar-item" href="/auth/logout">Logout</a>
-            <a class="navbar-item" href="/profile">Profile</a>
-            <% } %>
+      <%- include('partials/alerts') %>
+      <% if (!currentUser) { %>
+        <div class="navbar-brand">
+          <span class="navbar-item" href="/">Menyoo</span>
+          <span class="navbar-burger burger" data-target="navbarMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
         </div>
-      </div>
+
+        <div id="navbarMenu" class="navbar-menu">
+          
+            <div class="navbar-end">
+              <a class="navbar-item" href="/auth/signup">Signup</a>
+              <a class="navbar-item" href="/auth/login">Login</a>
+            </div>
+            <% } else { %>
+              <div class="navbar-brand">
+                <span class="navbar-item" href="/">Menyoo</span>
+                <span class="navbar-burger burger" data-target="navbarMenu">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+              <div class="navbar-end">
+                <a class="navbar-item" href="/auth/logout">Logout</a>
+                <a class="navbar-item" href="/profile">Profile</a>
+                <% } %>
+              </div>
+
+        </div>
     </div>
   </nav>
   <%- body %>

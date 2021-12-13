@@ -181,6 +181,7 @@ router.post('/food', isLoggedIn, function(req, res) {
 
 router.put('/:id', function(req, res) {
     console.log('EDIT FORM DATA', req.body);
+    
     let restaurantIndex = Number(req.params.id);
     restaurant.update({
         name: req.body.name,
