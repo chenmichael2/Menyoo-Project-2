@@ -1,36 +1,54 @@
-
 <body>
-    <a href="/restaurant">Show All Restaurants</a>
-        <p class="name">Name:<%= restaurant1.name %></p>
-        <ul>Hours: 
-            <li>Mon: <%= restaurant1.mon %></li>
-            <li>Tue: <%= restaurant1.tue %></li>
-            <li>Wed: <%= restaurant1.wed %></li>
-            <li>Thu: <%= restaurant1.thu %></li>
-            <li>Fri: <%= restaurant1.fri %></li>
-            <li>Sat: <%= restaurant1.sat %></li>
-            <li>Sun: <%= restaurant1.sun %></li>
+        <a id="top-link" href="/restaurant">Show All Restaurants</a>
+    <div class="one-restaurant">
+        <p class="name">Name:<%= restaurant1.name %>
+        </p>
+        <ul>Hours:
+            <li>Mon: <%= restaurant1.mon %>
+            </li>
+            <li>Tue: <%= restaurant1.tue %>
+            </li>
+            <li>Wed: <%= restaurant1.wed %>
+            </li>
+            <li>Thu: <%= restaurant1.thu %>
+            </li>
+            <li>Fri: <%= restaurant1.fri %>
+            </li>
+            <li>Sat: <%= restaurant1.sat %>
+            </li>
+            <li>Sun: <%= restaurant1.sun %>
+            </li>
         </ul>
         <div class="map"></div>
-        <p>Location Pictures:<%= restaurant1.locPicture %></p>
+        <p>Location Pictures:<%= restaurant1.locPicture %>
+        </p>
         <img src="" id="location">
-        <p>Food Pictures:<%= restaurant1.foodPicture %></p>
-        <p>Rating: <%= restaurant1.rating %></p>
-        <p>Description: <%= restaurant1.description %></p>
-        <p>Categories: <%= restaurant1.categories %></p>
-        <p>Location: <%= restaurant1.location %></p>
-        <p>Verified: <% if (restaurant1.verified === true) { %>
-            <%= 'yes' %>
-        <% } else { %> 
-        <%= 'no' %> 
-    <% } %>  </p>
-        <p>Price: <%= restaurant1.price %></p>
-        <p>Review: <%= restaurant1.review %></p>
+        <p>Food Pictures:<%= restaurant1.foodPicture %>
+        </p>
+        <p>Rating: <%= restaurant1.rating %>
+        </p>
+        <p>Description: <%= restaurant1.description %>
+        </p>
+        <p>Categories: <%= restaurant1.categories %>
+        </p>
+        <p>Location: <%= restaurant1.location %>
+        </p>
+        <p>Verified: <% if (restaurant1.verified===true) { %>
+                <%= 'yes' %>
+                    <% } else { %>
+                        <%= 'no' %>
+                            <% } %>
+        </p>
+        <p>Price: <%= restaurant1.price %>
+        </p>
+        <p>Review: <%= restaurant1.review %>
+        </p>
         <a href="/restaurant/<%= restaurant1.id %>/food">Menu</a>
         <a href="/restaurant/<%= restaurant1.id %>/food/new">Add Food</a>
-    <a href="/restaurant/edit/<%=restaurant1.id%>">Edit</a>
+        <a href="/restaurant/edit/<%=restaurant1.id%>">Edit</a>
 
-    <!-- <form method="post" action="/restaurants/<%= restaurant1.id %>/?_method=DELETE">
+        <!-- <form method="post" action="/restaurants/<%= restaurant1.id %>/?_method=DELETE">
         <input type="submit" value="Delete restaurant">
     </form> -->
+    </div>
 </body>

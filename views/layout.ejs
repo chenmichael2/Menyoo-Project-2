@@ -12,23 +12,30 @@
 </head>
 
 <body>
-
-  <div id="login">
-    <%- include('partials/alerts') %>
-
-      <% if (!currentUser) { %>
-        <span id="logo" class="hidden">Menyoo</span>
-        <span id="logins">
-          <a class="left" href="/auth/signup">Signup</a>
-          <a class="right" href="/auth/login">Login</a>
-        </span>
-        <% } else { %>
-          <span id="logins">
-            <a class="left" href="/auth/logout">Logout</a>
-            <a class="right" href="/profile">Profile</a>
-          </span>
-          <% } %>
-  </div>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <%- include('partials/alerts') %>
+          <% if (!currentUser) { %>
+            <span class="navbar-item" href="/">Menyoo</span>
+            <span class="navbar-burger burger" data-target="navbarMenu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+      </div>
+      <div id="navbarMenu" class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item" href="/auth/signup">Signup</a>
+          <a class="navbar-item" href="/auth/login">Login</a>
+          <% } else { %>
+            <a class="navbar-item" href="/auth/logout">Logout</a>
+            <a class="navbar-item" href="/profile">Profile</a>
+            <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>
   <%- body %>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"

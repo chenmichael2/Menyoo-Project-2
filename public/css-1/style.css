@@ -1,8 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Comforter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&display=swap');
+
 
 body {
   background-color: rgb(202, 49, 49);
   z-index: -100;
+}
+
+.navbar-item {
+  color: ghostwhite;
+  padding-left: 20px;
+}
+
+.navbar-brand {
+  font-family: "Comforter", sans-serif;
+  font-size: 45px;
+  padding: 2px;
+}
+
+.navbar {
+  padding: 0;
 }
 
 #profile {
@@ -16,11 +33,63 @@ body {
 ul {
   list-style: none;
 }
-.container {
-  background-color: white;
-  border-radius: 10px;
+
+#top-link {
+  margin-left: 900px;
 }
 
+.container-1 {
+  display: grid;
+  background-color: white;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  max-width: 1000px;
+  min-width: 1000px;
+  height: 405px;
+  grid-template-columns: 350px 350px auto;
+  grid-template-rows: 50px 20px 100px auto;
+  grid-gap: 10px;
+  font-family: "Roboto", sans-serif;
+}
+
+.name-index {
+  grid-area: 1 / 1 / 2 / 3 ;
+  justify-self: start;
+  align-self: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 40px;
+  font-weight: 100px;
+}
+
+.hours-index {
+  grid-area: 3 / 3 / 5 / 4 ;
+  justify-self: center;
+  align-self: center;
+}
+
+.loc-index {
+  grid-area: 2 / 1 / 3 / 2 ;
+}
+
+.loc-pic-index {
+  grid-area: 3 / 1 / 5 / 2 ;
+}
+.food-pic-index {
+  grid-area: 3 / 2 / 5 / 3 ;
+}
+.description-index {
+  grid-area: 5 / 1 / 6 / 4 ;
+}
+.view-index {
+  grid-area: 6 / 3 / 7 / 4 ;
+  margin-right: 20px;
+  margin-bottom: 2px;
+}
 .mainbody {
   text-align: center;
 }
@@ -45,6 +114,12 @@ h1 {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url('../assets-1/restaurant-photo.jpeg');
   opacity: 1;
   font-family: "Comforter", sans-serif;
+}
+
+.one-restaurant{
+  background-color: white;
+  width: 1300px;
+  border-radius: 20px;
 }
 
 #hidden {

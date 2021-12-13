@@ -10,14 +10,15 @@
 </head>
 
 <body>
-    <a id="createNew" href="/restaurant/new">Create New Restaurant</a>
+    <a id="top-link" href="/restaurant/new">Create New Restaurant</a>
     <% for( let i=0; i < restaurants.length; i++ ) { %>
         <% let a=restaurants[i]; %>
             <% a=a.toJSON() %>
-                <div class="container">
-                    <p class="name">Name:<%= a.name %>
+                <div class="container-1">
+                    <p class="name-index">
+                        <%= a.name %>
                     </p>
-                    <ul>Hours:
+                    <ul class="hours-index">Hours:
                         <li>Mon: <%= a.mon %>
                         </li>
                         <li>Tue: <%= a.tue %>
@@ -33,17 +34,20 @@
                         <li>Sun: <%= a.sun %>
                         </li>
                     </ul>
-                    <p>Location Pictures:<%= a.locPicture %>
+                    <p class="loc-pic-index">Location Pictures:<%= a.locPicture %>
                     </p>
-                    <p>Food Pictures:<%= a.foodPicture %>
+                    <p class="food-pic-index">Food Pictures:<%= a.foodPicture %>
                     </p>
-                    <p>Rating: <%= a.rating %>
-                    </p>
-                    <p>Description: <%= a.description %>
-                    </p>
-                    <p>Categories: <%= a.categories %>
-                    </p>
-                    <p>Location: <%= a.location %>
+                    <div>Rating: <%= a.rating %>
+                            <p> Price: <%= a.price %>
+                            </p>
+                        </div>
+                    <div class="description-index">Description: <%= a.description %>
+                            <p>Categories: <%= a.categories %>
+                            </p>
+                    </div>
+                    <p class="loc-index">
+                        <%= a.location %>
                     </p>
                     <p>Verified: <% if (a.verified===true) { %>
                             <%= 'yes' %>
@@ -51,12 +55,10 @@
                                     <%= 'no' %>
                                         <% } %>
                     </p>
-                    <p>Price: <%= a.price %>
-                    </p>
+
                     <p>Review: <%= a.review %>
                     </p>
-                    <a href="/restaurant/<%=a.id%>">View Restaurant</a>
-                    <hr>
+                    <a class="view-index" href="/restaurant/<%=a.id%>">View Restaurant</a>
                 </div>
                 <% } %>
 </body>
