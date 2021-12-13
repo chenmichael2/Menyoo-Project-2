@@ -116,10 +116,19 @@ h1 {
   font-family: "Comforter", sans-serif;
 }
 
-.one-restaurant{
+.one-restaurant {
   background-color: white;
   width: 1300px;
   border-radius: 20px;
+}
+
+.name-show {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 40px;
+  font-weight: 100px;
 }
 
 #hidden {

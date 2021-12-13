@@ -32,6 +32,15 @@ module.exports = {
       sun: {
         type: Sequelize.STRING,
       },
+      area: {
+        type: Sequelize.INTEGER
+      },
+      firstThree: {
+        type: Sequelize.INTEGER
+      },
+      lastFour: {
+        type: Sequelize.INTEGER
+      },
       locPicture: {
         type: Sequelize.ARRAY(Sequelize.STRING)
       },
