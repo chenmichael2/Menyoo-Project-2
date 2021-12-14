@@ -10,18 +10,6 @@ const { restaurant } = require('../models');
 router.post('/', function (req, res) {
     let name = req.body.name;
     let location = req.body.location;
-    // if (name === '' && location === '') {
-    //     restaurant.findAll()
-    //     .then(function(restaurants) {
-    //         res.render('pages/restaurant/index', { restaurants });
-    //     })
-    //     .catch(function(err) {
-    //         console.log('ERROR', err);
-    //         res.render('404', { message: 'There is a problem with the search. Please Try again' });
-    //     })
-    // } else if (name === '' && location !== '') {
-    //     restaurant.findAll()
-    // }
     restaurant.findAll({
         where: {
                 name: {[Op.iLike]: '%' + name + '%'} ,

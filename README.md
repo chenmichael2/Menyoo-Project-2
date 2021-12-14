@@ -116,6 +116,7 @@ router.put('/:id', function(req, res) {
 ```
 
 #### DELETE
+
 ````js
 // DELETE
 // router.delete('/:id', function(req, res) {
@@ -132,3 +133,25 @@ router.put('/:id', function(req, res) {
 //     })
 // });
 ````
+
+#### Search Bar
+```js
+router.post('/', function (req, res) {
+    let name = req.body.name;
+    let location = req.body.location;
+    restaurant.findAll({
+        where: {
+                name: {[Op.iLike]: '%' + name + '%'} ,
+                location: {[Op.iLike]: '%' + location + '%'}
+        }
+    })
+    .then(function(restaurants) {
+        console.log('RESULTS ARE', restaurants);
+        res.render('pages/restaurant/index', { restaurants });
+    })
+    .catch(function(err) {
+        console.log('ERROR', err);
+        res.render('404', { message: 'There is a problem with the search. Please Try again' });
+    })
+});
+```

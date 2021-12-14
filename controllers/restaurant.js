@@ -73,6 +73,7 @@ router.get('/:id/food', function(req, res) {
 })
 
 router.get('/:id/food/new', isLoggedIn, function(req, res) {
+    console.log(req.params.id);
     res.render('pages/food/new', { id: req.params.id });
 })
 
@@ -145,6 +146,8 @@ router.post('/', isLoggedIn, function(req, res) {
 
 router.post('/food', isLoggedIn, function(req, res) {
     console.log('SUBMITTED FORM', req.body);
+    restaurant.addFood(Number(req.body.restaurantId))
+    restaurant.save();
     restaurant.findByPk(Number(req.body.restaurantId))
         .then(function(restaurantItem) {
             restaurantItem.createFood({

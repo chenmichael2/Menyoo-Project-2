@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,20 +8,30 @@
     <link rel="stylesheet" href="../../../public/css-1/css-pages.css">
     <title>Foods</title>
 </head>
+
 <body>
     <a id="createNew" href="/food/new">Create New Food</a>
-    <% for( let i = 0; i < food.length; i++ ) { %>
-        <% let a = food[i]; %> 
-        <% a = a.toJSON() %>
-        <p>id: <%= a.id %></p>
-        <p>description: <%= a.description %></p>
-        <p>ingredients: <%= a.ingredients %></p>
-        <p>meal: <%= a.meal %></p>
-        <p>foodType: <%= a.foodType %></p>
-        <p>Price: <%= a.price %></p>
-        <p>likes: <%= a.likes %></p>
-        <a href="food/<%=a.id%>">View Food</a>
-        <hr>
-    <% } %>
+    <% for( let i=0; i < food.length; i++ ) { %>
+        <% let a=food[i]; %>
+            <% a=a.toJSON() %>
+                <div class="container-3">
+                    <p class="food-name-index"><%= a.name %>
+                    </p>
+                    <p>Description: <%= a.description %>
+                    </p>
+                    <p>Ingredients: <%= a.ingredients %>
+                    </p>
+                    <p><%= a.meal %>
+                    </p>
+                    <p>Food Type: <%= a.foodType %>
+                    </p>
+                    <p>$<%= a.price %>
+                    </p>
+                    <p>likes: <%= a.likes %>
+                    </p>
+                    <a href="food/<%=a.id%>">View Food</a>
+                </div>
+                <% } %>
 </body>
+
 </html>
