@@ -135,14 +135,6 @@ router.post('/', isLoggedIn, function(req, res) {
     .then(function(newRestaurant) {
         console.log('NEW RESTAURANT', newRestaurant.toJSON());
         newRestaurant = newRestaurant.toJSON();
-        // if (user.verify === true) {
-        //     newRestaurant.update({
-        //         verified: true
-        //     })
-        //     console.log('RESTAURANT VERIFIED');
-        // } else {
-        //     console.log('RESTAURANT NOT VERIFIED');
-        // }
         res.redirect(`restaurant/${newRestaurant.id}`);
     })
     .catch(function(err) {
@@ -181,7 +173,6 @@ router.post('/food', isLoggedIn, function(req, res) {
 
 router.put('/:id', function(req, res) {
     console.log('EDIT FORM DATA', req.body);
-    
     let restaurantIndex = Number(req.params.id);
     restaurant.update({
         name: req.body.name,
